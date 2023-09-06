@@ -37,7 +37,7 @@ class App:
         self.socketio_client.emit("set_name", {"name": self.assistant_name})
 
     def _on_message(self, data: dict[str, typing.Any]) -> None:
-        logger.info("Message received", extra=data)
+        logger.info("Message received")
 
         user_name = data["message"]["user"]
         input_message = data["message"]["content"]
