@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "ok-lets-go-gpt-assistant"
+version = "0.1.0"
+description = ""
+authors = ["Elisei <elisey.rav@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+gpt-assistant-lib = "^0.3.1"
+python-socketio = "^5.9.0"
+pydantic-settings = "^2.0.3"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.7.0"
+isort = "^5.12.0"
+ruff = "^0.0.287"
+flake8 = "^6.1.0"
+mypy = "^1.5.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+strict = true
+plugins = "pydantic.mypy"
+
+[tool.black]
+line-length = 120
+target_version = ['py311']
+
+[tool.isort]
+lines_after_imports = 2
+line_length = 120
+
+[tool.ruff]
+line-length = 120

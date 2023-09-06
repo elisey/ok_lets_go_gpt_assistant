@@ -1,0 +1,54 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  mypy:
+    cmds:
+      - mypy ok_lets_go_gpt_assistant
+  black:fix:
+    cmds:
+      - black .
+  black:check:
+    cmds:
+      - black --check .
+  isort:fix:
+    cmds:
+      - isort .
+  isort:check:
+    cmds:
+      - isort --check .
+  flake8:
+    cmds:
+      - flake8 .
+  ruff:
+    cmds:
+      - ruff .
+  format:
+    - task: black:fix
+    - task: isort:fix
+  lint:
+    deps:
+      - task: black:check
+      - task: isort:check
+      - task: mypy
+      - task: flake8
+      - task: ruff
+  all:
+    - task: lint
+
+  build:
+    cmds:
+      - docker build -t ok_lets_go_gpt_assistant:latest .
+  run:
+    cmds:
+      - docker run -d --name ok_lets_go_gpt_assistant_container ok_lets_go_gpt_assistant:latest
+  stop:
+    cmds:
+      - docker stop ok_lets_go_gpt_assistant_container
+  logs:
+    cmds:
+      - docker logs  ok_lets_go_gpt_assistant_container
+  remove:
+    cmds:
+      - docker rm ok_lets_go_gpt_assistant_container
