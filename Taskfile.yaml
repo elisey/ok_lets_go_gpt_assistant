@@ -42,7 +42,7 @@ tasks:
       - docker build -t ok_lets_go_gpt_assistant:latest .
   run:
     cmds:
-      - docker run -d --name ok_lets_go_gpt_assistant_container ok_lets_go_gpt_assistant:latest
+      - docker run -d --restart always --name ok_lets_go_gpt_assistant_container ok_lets_go_gpt_assistant:latest
   stop:
     cmds:
       - docker stop ok_lets_go_gpt_assistant_container
